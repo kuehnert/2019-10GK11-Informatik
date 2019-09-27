@@ -9,5 +9,6 @@ public class TicketAutomat {
     public void begruesse() {
     }
     
+    // Abfragen Scanner
     
 }

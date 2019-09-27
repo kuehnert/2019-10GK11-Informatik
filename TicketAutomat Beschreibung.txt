@@ -57,12 +57,12 @@ Daten
   - bezahlterBetrag: int
 
 Funktionen
-  - begruesse()
+  - begruesse() HA
+  - zeigePreistabelle() HA
+  - verabschiedeDich() HA
   - frageAnzahlTicketsAb()
-  - berechneGesamtpreis()
-  - zeigePreistabelle()
+  - berechneGesamtpreis() HA+
   - nimmGeldAn()
   - berechneWechselgeld()
   - druckeTickets()
-  - verabschiedeDich()
   - starteProgramm()
