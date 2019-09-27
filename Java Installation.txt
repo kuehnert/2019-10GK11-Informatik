@@ -1,0 +1,7 @@
+JAVA-Komponenten
+
+1. JRE = Java Runtime Environment, dient zum Auführen von (fertigen) Java-Programmen
+2. JDK = Java Development Kit, dient zum Entwickeln von Java-Anwendungen
+3. IDE = Integrated Development Environment, peppiger Begriff für Editor (= Textverarbeitungsprogramm)
+
+BlueJ

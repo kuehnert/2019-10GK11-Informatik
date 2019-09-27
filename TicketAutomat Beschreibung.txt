@@ -1,0 +1,68 @@
+ Fahrkartenautomat
+-------------------
+
+Funktionen
+ * Muss Anzahl Karten abfragen
+ * Tickets drucken
+ * Gesamtpreis ausrechnen
+ * Preise anzeigen
+ * Begrüßen, Verabschieden
+ * Muss Geld annehmen
+ * Wechselgeld ausrechnen und zurückgeben
+ (* 2 versch. Preise berücksichtigen )
+
+Dialog
+ Q> "Willkommen im Phantasee-Land. Ein Ticket kostet 48€. Wie viele Tickets möchten Sie?"
+ A> 5
+ Q> "Sehr schön. Dann bekomme ich 240€. Bitte werfen Sie Geld ein."
+ A> "50€"
+ Q> "Danke. Es fehlen noch 190€."
+ A> "100€"
+ Q> "Danke. Es fehlen noch 90€."
+ A> "50€"
+ Q> "Danke. Es fehlen noch 40€."
+ A> "50€"
+ Q> "Sie bekommen 10€ Rückgeld. (10€). Hier sind Ihre Tickets"
+ Q> ############
+    # 1 Ticket #
+    # für      #
+    # Ph-Land  #
+    ############
+ Q> ############
+    # 1 Ticket #
+    # für      #
+    # Ph-Land  #
+    ############
+ Q> ############
+    # 1 Ticket #
+    # für      #
+    # Ph-Land  #
+    ############
+ Q> ############
+    # 1 Ticket #
+    # für      #
+    # Ph-Land  #
+    ############
+ Q> ############
+    # 1 Ticket #
+    # für      #
+    # Ph-Land  #
+    ############
+
+Konstruktion unseres Programms
+Daten
+  - einzelpreis: int
+  - gewuenschteAnzahl: int
+  - gesamtPreis: int
+  - bezahlterBetrag: int
+
+Funktionen
+  - begruesse()
+  - frageAnzahlTicketsAb()
+  - berechneGesamtpreis()
+  - zeigePreistabelle()
+  - nimmGeldAn()
+  - berechneWechselgeld()
+  - druckeTickets()
+  - verabschiedeDich()
+  - starteProgramm()

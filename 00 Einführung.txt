@@ -1,0 +1,23 @@
+Was ist Informatik?
+
+Informatik ist eine Problem-Löse-Wissenschaft
+  - Man bekommt ein Problem gestellt
+  - Man vesucht, es auf möglichst allgemeine Art zu lösen
+  - Dazu braucht es Abstraktion, d.h. die Wirklichkeit auf das Wichtige zu reduzieren
+  - Beispiele für informatische Probleme:
+    - Simulation (Nachbauen der Realität im Computer)
+      - Optimierung einer Straßenkreuzung
+      - Crashtests
+      - Konstruktion von energieeffizienten Flugzeugen
+      - Wettervorhersage
+      - Liftsteuerung
+    - Mathematische Probleme, die sich nicht perfekt lösen lassen
+      - Finden von Primzahlen
+      - Wegeoptimierung
+
+Programmieren im Info-GK
+  - Wir programmieren in Java (10.1 & 10.2)
+  - Probleme sind primitiv
+  - Sprache: Vokabular & Syntax sind ungewohnt und mühsam zu lernen
+
+
