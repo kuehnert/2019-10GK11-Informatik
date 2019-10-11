@@ -22,7 +22,7 @@ public class TicketAutomat {
             "Willkommen im Phantaseeland!\n" +
             "1 Ticket kostet " + einzelpreis + "€\n"
         );
-        
+
         bezahlterBetrag = 0;
     }
 
@@ -46,6 +46,9 @@ public class TicketAutomat {
     }
 
     private void nimmGeldAn() {
+        // TODO:
+        // 1. Automat soll nur gültige Werte annehmen: 1, 2, 5, 10, 20, 50, 100
+
         // 0. tue das Folgende **so lange wie**.....
         while (bezahlterBetrag < gesamtPreis) {
             // 1. Fordere Benutzer auf, ein Geldstück/-schein einzuwerfen
@@ -55,23 +58,54 @@ public class TicketAutomat {
             int eingeworfen; // lokale Variable
             eingeworfen = tastaturEingabe.nextInt();
 
-            // 3. Addiere den Betrag <eingeworfen> zu <bezahlterBetrag>
-            bezahlterBetrag = bezahlterBetrag + eingeworfen;
-            
-            System.out.print("Sie haben bislang " + bezahlterBetrag +
-                " eingeworfen");
+            // Füge Betrag nur dann hinzu, wenn er 1 oder 2 oder ... ist
+            if (eingeworfen == 1 || eingeworfen == 2) {
+                // 3. Addiere den Betrag <eingeworfen> zu <bezahlterBetrag>
+                bezahlterBetrag = bezahlterBetrag + eingeworfen;
+
+                System.out.print("Sie haben bislang " + bezahlterBetrag +
+                    " eingeworfen");
+            }
         }
     }
 
     private void berechneWechselgeld() {
+        // 100€ - 80€
+        int wechselgeld = bezahlterBetrag - gesamtPreis;
+
+        // Gib wechselgeld aus, wenn es wechselgeld gibt
+        if (wechselgeld > 0) {
+            System.out.println("Sie bekommen noch " + wechselgeld + "€ zurück");
+            // TODO: Gib Wechselgeld richtig gestückelt aus
+        }
+    }
+
+    private void druckeTicket() {
+        System.out.println("##################################");
+        System.out.println("# Ihr Ticket fürs Glück!         #");
+        System.out.println("##################################\n");
+    }
+
+    private void druckeTickets() {
+        int nochZuDrucken = gewuenschteAnzahl;
+        while (nochZuDrucken > 0) {
+            System.out.println("Drucke noch " + nochZuDrucken + " Tickets...");
+            druckeTicket();
+            // Verringere nochZuDrucken um 1
+            nochZuDrucken = nochZuDrucken - 1;
+        }
     }
 
     public void zeigeMenu() {
-        begruesse();
-        frageAnzahlTicketsAb();
-        berechneGesamtpreis();
-        nimmGeldAn();
-        berechneWechselgeld();
-        verabschiedeDich();
+        // Endlosschleife 
+        while (true) {
+            begruesse();
+            frageAnzahlTicketsAb();
+            berechneGesamtpreis();
+            nimmGeldAn();
+            berechneWechselgeld();
+            druckeTickets();
+            verabschiedeDich();
+        }
     }
 }
