@@ -30,6 +30,7 @@ public class TicketAutomat {
     private void frageAnzahlTicketsAb() {
         System.out.print("Wie viele Tickets? ");
         gewuenschteAnzahl = tastaturEingabe.nextInt();
+        
         System.out.print("Aha, Sie wollen also " +
             gewuenschteAnzahl +
             " Tickets!"
@@ -38,7 +39,7 @@ public class TicketAutomat {
 
     private void berechneGesamtpreis() {
         gesamtPreis = gewuenschteAnzahl * einzelpreis;
-        System.out.println("Bitte werfen Sie " + gesamtPreis + "€ ein");
+        System.out.println("Bitte werfen Sie " + gesamtPreis + " € ein");
     }
 
     private void verabschiedeDich() {
@@ -59,12 +60,16 @@ public class TicketAutomat {
             eingeworfen = tastaturEingabe.nextInt();
 
             // Füge Betrag nur dann hinzu, wenn er 1 oder 2 oder ... ist
-            if (eingeworfen == 1 || eingeworfen == 2) {
+            if (eingeworfen == 1 || eingeworfen == 2 || eingeworfen == 5 || 
+                eingeworfen == 10 || eingeworfen == 20 || eingeworfen == 50 || 
+                eingeworfen == 100) {
                 // 3. Addiere den Betrag <eingeworfen> zu <bezahlterBetrag>
                 bezahlterBetrag = bezahlterBetrag + eingeworfen;
 
-                System.out.print("Sie haben bislang " + bezahlterBetrag +
-                    " eingeworfen");
+                System.out.println("Sie haben bislang " + bezahlterBetrag +
+                    " eingeworfen.");
+            } else {
+                System.out.println("Der Wert wird nicht akzeptiert.");
             }
         }
     }
@@ -76,7 +81,43 @@ public class TicketAutomat {
         // Gib wechselgeld aus, wenn es wechselgeld gibt
         if (wechselgeld > 0) {
             System.out.println("Sie bekommen noch " + wechselgeld + "€ zurück");
-            // TODO: Gib Wechselgeld richtig gestückelt aus
+            
+            // Gib Wechselgeld richtig gestückelt aus
+            while (wechselgeld >= 100) {
+                System.out.print("[100€-Schein] ");
+                wechselgeld = wechselgeld - 100;
+            }
+            
+            while (wechselgeld >= 50) {
+                System.out.print("[50€-Schein] ");
+                wechselgeld = wechselgeld - 50;
+            }
+            
+            while (wechselgeld >= 20) {
+                System.out.print("[20€-Schein] ");
+                wechselgeld = wechselgeld - 20;
+            }
+            
+            while (wechselgeld >= 10) {
+                System.out.print("[10€-Schein] ");
+                wechselgeld = wechselgeld - 10;
+            }
+            
+            while (wechselgeld >= 5) {
+                System.out.print("[5€-Schein] ");
+                wechselgeld = wechselgeld - 5;
+            }
+            
+            while (wechselgeld >= 2) {
+                System.out.print("[2€-Münze] ");
+                wechselgeld = wechselgeld - 2;
+            }
+            
+            while (wechselgeld >= 1) {
+                System.out.print("[1€-Münze] ");
+                wechselgeld = wechselgeld - 1;
+            }
+            
         }
     }
 
@@ -88,6 +129,7 @@ public class TicketAutomat {
 
     private void druckeTickets() {
         int nochZuDrucken = gewuenschteAnzahl;
+        
         while (nochZuDrucken > 0) {
             System.out.println("Drucke noch " + nochZuDrucken + " Tickets...");
             druckeTicket();
