@@ -1,0 +1,22 @@
+Das %-Zeichen
+
+0. Divisions-Operator
+  a / b:
+  - entweder a & b sind int: Ganzzahldivision, Rest wird abgeschnitten
+  - 5 / 3 => 1
+  - 6 / 3 => 2
+  - 7 / 3 => 2
+  - 8 / 3 => 2
+  - 9 / 3 => 3
+  - oder min. a oder b sind double: Division mit Kommazahlen
+
+1. Modulo-Operator
+  a % b => Der Divisionsrest der Ganzzahl-Division von a geteilt durch b
+  Sprich: „a modulo b“
+  - 5 % 3 => 2
+  - 6 % 3 => 0
+  - 7 % 3 => 1
+  - 8 % 3 => 2
+  - 9 % 3 => 0
+
+2. System.out.printf("%2.4f", 0.12345678); => " 0,1234"

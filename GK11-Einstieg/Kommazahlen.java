@@ -29,10 +29,5 @@ public class Kommazahlen {
         double zahl; // 15 Stellen Genauigkeit
         
         zahl = 1.123456789102345678912345789;
-        
+    }
 }
-
-2
-15
-99
-100
