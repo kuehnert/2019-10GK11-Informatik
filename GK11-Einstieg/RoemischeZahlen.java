@@ -7,9 +7,19 @@ public class RoemischeZahlen {
             zahl = zahl - 1000;
         }
 
+        if (zahl >= 900)  {
+            rueckgabe = rueckgabe + "CM";
+            zahl = zahl - 900;
+        }
+
         if (zahl >= 500)  {
             rueckgabe = rueckgabe + "D";
             zahl = zahl - 500;
+        }
+
+        if (zahl >= 400)  {
+            rueckgabe = rueckgabe + "CD";
+            zahl = zahl - 400;
         }
 
         while (zahl >= 100) {
@@ -17,9 +27,19 @@ public class RoemischeZahlen {
             zahl = zahl - 100;
         }
 
+        if (zahl >= 90)  {
+            rueckgabe = rueckgabe + "XC";
+            zahl = zahl - 90;
+        }
+
         if (zahl >= 50)  {
             rueckgabe = rueckgabe + "L";
             zahl = zahl - 50;
+        }
+
+        if (zahl >= 40)  {
+            rueckgabe = rueckgabe + "XL";
+            zahl = zahl - 40;
         }
 
         while (zahl >= 10) {
@@ -27,9 +47,19 @@ public class RoemischeZahlen {
             zahl = zahl - 10;
         }
 
+        if (zahl >= 9)  {
+            rueckgabe = rueckgabe + "IX";
+            zahl = zahl - 9;
+        }
+
         if (zahl >= 5)  {
             rueckgabe = rueckgabe + "V";
             zahl = zahl - 5;
+        }
+
+        if (zahl >= 4)  {
+            rueckgabe = rueckgabe + "IV";
+            zahl = zahl - 4;
         }
 
         while (zahl >= 1) {
@@ -40,56 +70,41 @@ public class RoemischeZahlen {
         return rueckgabe;
     }
 
-    public void testeRoman() {
-        int z;
-        z = 1324;
-        System.out.print(z + " MCCCXXIIII: ");
-        toRoman(z);
+    public String asBinaryDoof(int zahl) {
+        String rueckgabe = "";
 
-        z = 2772;
-        System.out.print("\n\n" + z + " MMDCCLXXII: ");
-        toRoman(z);
+        int stelle = 256;
+        while (stelle > 0) {
+            if (zahl >= stelle) {
+                zahl = zahl - stelle;
+                rueckgabe = rueckgabe + "1";
+            } else {
+                rueckgabe = rueckgabe + "0";            
+            }
 
-        z = 3689;
-        System.out.print("\n\n" + z + " MMMDCLXXXVIIII: ");
-        toRoman(z);
-
-        z = 999;
-        System.out.print("\n\n" + z + " DCCCCLXXXXVIIII: ");
-        toRoman(z);
+            stelle = stelle / 2;
+        }
+        return rueckgabe;
     }
 
     public String asBinary(int zahl) {
+        // Erzeuge einen neuen, leeren String
         String rueckgabe = "";
 
-        if (zahl >= 8) {
-            zahl = zahl - 8;
-            rueckgabe = rueckgabe + "1";
-        } else {
-            rueckgabe = rueckgabe + "0";            
+        // Solange wie zahl > 0, zerteile sie
+        while (zahl > 0) {
+            // Wenn zahl ungerade, wird ausgabe zu ...1
+            // sonst ...0
+            if (zahl % 2 == 0)  {
+                rueckgabe = "0" + rueckgabe;
+            } else {
+                rueckgabe = "1" + rueckgabe;
+            }
+            
+            zahl = zahl / 2;
         }
 
-        if (zahl >= 4) {
-            zahl = zahl - 4;
-            rueckgabe = rueckgabe + "1";
-        } else {
-            rueckgabe = rueckgabe + "0";            
-        }
-
-        if (zahl >= 2) {
-            zahl = zahl - 2;
-            rueckgabe = rueckgabe + "1";
-        } else {
-            rueckgabe = rueckgabe + "0";            
-        }
-
-        if (zahl >= 1) {
-            zahl = zahl - 1;
-            rueckgabe = rueckgabe + "1";
-        } else {
-            rueckgabe = rueckgabe + "0";            
-        }
-
+        // Gebe den String als Ergebnis zurück
         return rueckgabe;
     }
 
@@ -98,14 +113,27 @@ public class RoemischeZahlen {
             System.out.print(".");
         } else {
             System.out.println("\nFEHLER! " + 
-            erwartet + " != " + ergebnis );
+                erwartet + " != " + ergebnis );
         }
     }
 
+    public void testRoman() {
+        test("MCCCXXIV", toRoman(1324));
+        test("MMDCCLXXII", toRoman(2772));
+        test("MMMDCLXXXIX", toRoman(3689));
+        test("CMXCIX", toRoman(999));
+    }
+
     public void testAsBinary() {
-        test("0011", asBinary(3));
+        test("11", asBinary(3));
         test("1111", asBinary(15));
-        test("0111", asBinary(7));
+        test("111", asBinary(7));
         test("100000", asBinary(32));
+    }
+
+    public void testAll() {
+        testRoman();
+        testAsBinary();
+        String name = "Alisa die Kinderflüsterin";
     }
 }
