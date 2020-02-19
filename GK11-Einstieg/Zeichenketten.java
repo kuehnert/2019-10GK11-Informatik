@@ -81,7 +81,7 @@ public class Zeichenketten {
         test("Ubruhum", ersetzeA("Abraham"));
     }
 
-    private void test(String erwartet, String ergebnis) {
+    private void test(Object erwartet, Object ergebnis) {
         if (erwartet.equals(ergebnis)) {
             System.out.print(".");
         } else {
@@ -90,14 +90,69 @@ public class Zeichenketten {
         }
     }
 
-    String text = "Drei Chinesen mit dem Kontrabass\n"+
-        "saßen auf der Straße und erzählten sich was.\n"+
-        "Da kam die Polizei, ei was ist denn das?\n"+
+    String text = "Drei Afghanen mit dem Kontrabass\n"+
+        "saßen in der Örtlichkeit und erzählten sich was.\n"+
+        "Da kam die Polizei, Ei was ist denn das?\n"+
         "Drei Chinesen mit dem Kontrabass.";
 
+    public boolean enthaelt(String s, char c) {
+        for (int i = 0; i < s.length(); i = i + 1) {
+            if (s.charAt(i) == c) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public boolean istVokal(char buchstabe) {
-        String vokale = "aeiouAEIOUäöüÄÖÜ";
-        
+        return enthaelt("aeiouäöüAEIOUÄÖÜ", buchstabe);
+    }
+
+    public boolean istGrosserVokal(char buchstabe) {
+        return enthaelt("AEIOUÄÖÜ", buchstabe);
+    }
+
+    public boolean istKleinerVokal(char buchstabe) {
+        return enthaelt("aeiouäöü", buchstabe);
+    }
+
+    public int zaehleVokale(String s) {
+        int anzahl = 0;
+
+        for (int i = 0; i < s.length(); i = i + 1) {
+            char c = s.charAt(i);
+
+            if (istVokal(c)) {
+                anzahl = anzahl + 1;
+            }
+        }
+
+        return anzahl;
+    }
+
+    public void testZaehleVokale() {
+        test(0, zaehleVokale(""));
+        test(0, zaehleVokale("df"));
+        test(1, zaehleVokale("abc"));
+        test(2, zaehleVokale("Wörter"));
+        test(2, zaehleVokale("Apfel"));
+        test(3, zaehleVokale("abcdei"));
+        test(18, zaehleVokale("AAAAAAAAAAAAAAAAAAAARGH"));
+    }
+
+    public void testIstVokal() {
+        test(true, istVokal('a'));
+        test(true, istVokal('e'));
+        test(true, istVokal('E'));
+        test(true, istVokal('Ä'));
+        test(true, istVokal('ü'));
+        test(true, istVokal('O'));
+        test(false, istVokal('c'));
+        test(false, istVokal('b'));
+        test(false, istVokal('?'));
+        test(false, istVokal('#'));
+        test(false, istVokal('"'));
     }
 
     public String chinesen1(String input) {
@@ -108,11 +163,10 @@ public class Zeichenketten {
         for (int i = 0; i < input.length(); i = i + 1) {
             char c = input.charAt(i);
 
-            // ist c ein "e"?
-            // TODO: Große Vokale
-            // TODO: >1 Vokale hintereinander
-            if (c == 'a' || c == 'e' || c == 'i' || c=='o' || c=='u' ) {
+            if (istKleinerVokal(c)) {
                 output = output + 'ä';
+            } else if (istGrosserVokal(c)) {
+                output = output + 'Ä';
             } else {
                 output = output + c;
             }
@@ -126,11 +180,3 @@ public class Zeichenketten {
         System.out.println( chinesen1(text) );
     }
 }
-
-/*
- * Hausaufgabe: „Drei Chinesen mit dem Kontrabass“
- * 1. Schreiben Sie eine Methode, mit der alle Vokale in einem 
- *    String durch 'o' ersetzt werden
- * 2. Im 2. Schritt soll der Vokal, durch den ersetzt wird, 
- *    frei wählbar sein.
- */
