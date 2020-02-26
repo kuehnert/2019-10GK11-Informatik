@@ -179,4 +179,31 @@ public class Zeichenketten {
     public void testChinesen1() {
         System.out.println( chinesen1(text) );
     }
+
+    public double gibVokalProzente(String input) {
+        int anzahlVokale = zaehleVokale(input);
+        int anzahlZeichen = input.length();
+
+        return (double) anzahlVokale / anzahlZeichen;
+    }
+
+    public String inProzent(double d) {
+        return String.format("%.2f%%", d * 100.0);
+    }
+
+    public void testGibVokalProzente() {
+        double anteil = gibVokalProzente("Hallo Liebe Welt");
+        System.out.println("anteil: " + anteil);
+        System.out.println( inProzent(anteil));
+    }
+
+    // Formatieren Sie diese Strings mit String.format
+    /*
+     * String.format("", ....)
+     *  "5" <- 5
+     *  "  4" <- 4
+     *  "0003" <- 3
+     *  "0,1" <- 0.1
+     *  "Hans trinkt 2,55l Bier" <- "Hans", 2.56666
+     */
 }
