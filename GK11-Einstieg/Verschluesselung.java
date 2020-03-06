@@ -1,3 +1,12 @@
+// Desiderata:
+// 1. Mit Kleinbuchstaben umgehen => 'a' => 'B'
+// 2. Leer- und Sonderzeichen => filtern
+// 4. Umlaute: 'ä' => 'AE'
+// 5. Ungültige Verschiebungen, z.B. key = 30
+// 6. Ausgabe in Blöcken von 5 Zeichen
+// 7b. Zahlen => 7 => SIEBEN
+// a. (Vigenère)
+
 public class Verschluesselung {
     private char caesarZeichen(char i, int key) {
        int o = i + key;
@@ -14,6 +23,11 @@ public class Verschluesselung {
     }
     
     public String caesar(String input, int key) {
+        if (key > 25) {
+            System.out.println("Alisa sagt: Nein!");
+            return "FEHLER!!!!!";
+        }
+        
         String output = "";
 
         for (int i = 0; i < input.length(); i = i + 1) {
