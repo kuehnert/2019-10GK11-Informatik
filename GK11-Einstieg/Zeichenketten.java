@@ -197,6 +197,22 @@ public class Zeichenketten {
         System.out.println( inProzent(anteil));
     }
 
+    public void stringFormatBeispiele() {
+        System.out.printf( "%d\n", 5);
+
+        System.out.printf("%3d\n", 4);   //? "  4"
+        System.out.printf("%3d\n", 40);  //? " 40"
+        System.out.printf("%3d\n", 400); //? "400"
+
+        System.out.printf("%04d\n", 4);   //? "  3"
+        System.out.printf("%04d\n", 40);   //? "  3"
+        System.out.printf("%04d\n", 400);   //? "  3"
+
+        System.out.printf("%.2f\n", 1.0/3);   //? "1,0"
+        System.out.printf("Hans trinkt %1.3gl Kaffee\n", 2.56666);   //? "1,0"
+        
+        System.out.printf("%.2f\n", 0.5 * 100.0);   //? "50%"
+    }
     // Formatieren Sie diese Strings mit String.format
     /*
      * String.format("", ....)
@@ -204,6 +220,6 @@ public class Zeichenketten {
      *  "  4" <- 4
      *  "0003" <- 3
      *  "0,1" <- 0.1
-     *  "Hans trinkt 2,55l Bier" <- "Hans", 2.56666
+     *  "Hans trinkt 2,57l Bier" <- "Hans", 2.56666
      */
 }
