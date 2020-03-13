@@ -42,6 +42,33 @@ public class Verschluesselung {
         return caesar(input, -key);
     }
     
+    private String clean(String input) {
+        String out = "";
+        input = input.toUpperCase();
+        
+        for (int i = 0; i < input.length(); i = i + 1) {
+            char c = input.charAt(i);
+            
+            if (c >= 'A' && c <= 'Z') {
+                out += Character.toString(c);
+            } else if (c == 'Ä') {
+                out += "AE";
+            } else if (c == 'Ö') {
+                out += "OE";
+            } else if (c == 'Ü') {
+                out += "UE";
+            } 
+        }
+        
+        return out;
+    }
+    
+    // Hausaufgabe
+    private String bloecke(String input) {
+        // "ABCDEFGHJKL" =>
+        return "ABCDE FGHJK L";
+    }
+    
     public void testCaesar() {
         Utils.test("JCWUCWHICDGPB", caesar("HAUSAUFGABENZ", 2));
         Utils.test("QGOTYINRGKMZGHKR", caesar("KAINSCHLAEGTABEL", 6));
@@ -56,5 +83,6 @@ public class Verschluesselung {
         Utils.test("VERSUCHUNGENSOLLTEMANNACHGEBENWERWEISSOBSIEWIEDERKOMMENOSCARWILDE", 
             decaesar("FOBCEMREXQOXCYVVDOWKXXKMRQOLOXGOBGOSCCYLCSOGSONOBUYWWOXYCMKBGSVNO", 10));
         
+        Utils.test("DASOESTEINHUND", clean("Das öst ein Hund.?!?!"));
     }
 }
